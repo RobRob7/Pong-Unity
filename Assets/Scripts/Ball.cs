@@ -44,8 +44,10 @@ public class Ball : MonoBehaviour
     void RestartGame()
     {
         ResetBall();
+        gameObject.GetComponent<PlayerController>().ResetPlayerPosition();
         Invoke("InitialLaunchOfBall", 1);
     }
+
     void InitialLaunchOfBall()
     {
         var rnd = new System.Random();
@@ -54,37 +56,47 @@ public class Ball : MonoBehaviour
 
         if(randDouble < 0.25)
         {
-            Debug.Log(randDouble);
-            Debug.Log("First");
-            ballRigidBody2D.velocity = new Vector2(Random.Range(5,10), -Random.Range(2,5));
+            //Debug.Log(randDouble);
+            // Debug.Log("First");
+            ballRigidBody2D.velocity = new Vector2(Random.Range(5,10), -Random.Range(4,6));
         }
         else if(randDouble >= 0.25 && randDouble < 0.5)
         {
-            Debug.Log(randDouble);
-            Debug.Log("Second");
-            ballRigidBody2D.velocity = new Vector2(Random.Range(5,10), Random.Range(2,5));
+            //Debug.Log(randDouble);
+            // Debug.Log("Second");
+            ballRigidBody2D.velocity = new Vector2(Random.Range(5,10), Random.Range(4,6));
         }
         else if(randDouble >= 0.50 && randDouble < 0.75)
         {
-            Debug.Log(randDouble);
-            Debug.Log("Third");
-            ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), Random.Range(2,5));
+            //Debug.Log(randDouble);
+            // Debug.Log("Third");
+            ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), Random.Range(4,6));
         }
         else if(randDouble >= 0.75 && randDouble <= 1.0)
         {
-            Debug.Log(randDouble);
-            Debug.Log("Fourth");
-            ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), -Random.Range(2,5));
+            //Debug.Log(randDouble);
+            // Debug.Log("Fourth");
+            ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), -Random.Range(4,6));
         }
     }
     void OnCollisionEnter2D(Collision2D target)
     {
         if(target.collider.CompareTag("Player1") || target.collider.CompareTag("Player2"))
-        {
+        {   
+            //var rb = GetComponent<Rigidbody2D>();
+            
+            
+
             Vector2 vel;
             vel.x = ballRigidBody2D.velocity.x;
             vel.y = (ballRigidBody2D.velocity.y / 2) + (target.collider.attachedRigidbody.velocity.y / 3);
             ballRigidBody2D.velocity = vel;
+        }
+        else
+        {
+            Vector2 vel;
+            vel.x = ballRigidBody2D.velocity.x;
+            vel.y = -ballRigidBody2D.velocity.y;
         }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Top Guard
   - Player1
   - Player2
+  - Wall
   layers:
   - Default
   - TransparentFX

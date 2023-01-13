@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _speed;
     Transform playerTransform;
     Rigidbody2D playerRigidBody2D;
-    
+    Vector2 position;
+    RigidbodyConstraints2D original;
 
     void Awake()
     {
         _speed = 7;
         playerTransform = GetComponent<Transform>();
         playerRigidBody2D = GetComponent<Rigidbody2D>();
+        position = playerRigidBody2D.position;
+        original = playerRigidBody2D.constraints;
+
     }
 
     // Start is called before the first frame update
@@ -32,6 +36,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         AssignPlayers();
+    }
+
+    public void ResetPlayerPosition()
+    {
+        //playerRigidBody2D.position = position;
+        Debug.Log("Resetting paddles");
     }
 
     void AssignPlayers()
@@ -89,19 +99,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*public void OnCollisionEnter(GameObject targetObj)
+    void OnCollisionEnter(Collision targetObj)
     {   
-        Transform ballTransform = targetObj.GetComponent<Transform>();
-
-        if(targetObj.tag == "Ball")
+        //Transform ballTransform = targetObj.GetComponent<Transform>();
+        
+        if(targetObj.collider.CompareTag("Ball"))
         {
-            //playerRigidBody.isKinematic = true;
-            float x = ballTransform.position.x;
-            float y = ballTransform.position.y;
 
-            Vector3 movement = new Vector3(x, y, 0);
-
-            ballTransform.position = -movement * Time.deltaTime * _speed;
+            playerRigidBody2D.constraints = RigidbodyConstraints2D.FreezePositionY;
+            playerRigidBody2D.constraints = original;
         } 
-    }*/
+    }
 }

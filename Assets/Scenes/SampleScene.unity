@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7317235822143016156, guid: 2166e11b362486e4ea40aab7456dcdc4, type: 3}
       propertyPath: m_TagString
-      value: Top Guard
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7649626479280088571, guid: 2166e11b362486e4ea40aab7456dcdc4, type: 3}
       propertyPath: m_RootOrder
@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8316292193943439605, guid: 2999a2e04badcc042b10ca63ad4653c0, type: 3}
       propertyPath: m_TagString
-      value: Bottom Guard
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8485717242562523506, guid: 2999a2e04badcc042b10ca63ad4653c0, type: 3}
       propertyPath: m_SortingOrder
@@ -1655,7 +1655,6 @@ GameObject:
   - component: {fileID: 1966589462738510202}
   - component: {fileID: 1966589462738510201}
   - component: {fileID: 1966589462738510208}
-  - component: {fileID: 1966589462738510207}
   - component: {fileID: 1966589462738510205}
   - component: {fileID: 1966589462738510204}
   m_Layer: 0
@@ -1779,19 +1778,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &1966589462738510207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966589462738510200}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956c34de8751e7b4aa2514bb582bd85f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 0
 --- !u!114 &1966589462738510208
 MonoBehaviour:
   m_ObjectHideFlags: 0
