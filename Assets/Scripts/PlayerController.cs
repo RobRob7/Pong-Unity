@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AssignPlayers();
+    }
+
+    void AssignPlayers()
+    {
         if(tag == "Player1")
         {
 
