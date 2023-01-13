@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        _speed = 4;
+        _speed = 7;
         playerTransform = GetComponent<Transform>();
         playerRigidBody2D = GetComponent<Rigidbody2D>();
     }
