@@ -9,12 +9,9 @@ public class Ball : MonoBehaviour
     Rigidbody2D ballRigidBody2D;
     GameObject scoreTracker1;
     GameObject scoreTracker2;
-    int counter1 = 0;
-    int counter2 = 0;
 
     void Awake()
     {
-        //_speed = 3;
         ballRigidBody2D = GetComponent<Rigidbody2D>();
         scoreTracker1 = GameObject.Find("Player1Scored");
         scoreTracker2 = GameObject.Find("Player2Scored");
@@ -32,16 +29,8 @@ public class Ball : MonoBehaviour
 
         if(ballRigidBody2D.position.x < -8.25 || ballRigidBody2D.position.x > 8.25)
         {
-            
             ResetBall();
-            //Invoke("InitialLaunchOfBall", 3);
         }
-        //else
-        // {
-        //     counter1++;
-        //     SendMessage("DisplayText", 1);
-        //     ResetBall();
-        // }
     }
 
     void ResetBall()
@@ -59,10 +48,6 @@ public class Ball : MonoBehaviour
     }
     void InitialLaunchOfBall()
     {
-        //float random = Random.Range(0,1);
-        //float randomX = Random.Range(5,10);
-        //float randomY = Random.Range(2,5);
-
         var rnd = new System.Random();
         double randDouble = rnd.NextDouble();
 
