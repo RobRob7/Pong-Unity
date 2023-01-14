@@ -10,6 +10,8 @@ TagManager:
   - Player1
   - Player2
   - Wall
+  - P1_Counter
+  - P2_Counter
   layers:
   - Default
   - TransparentFX

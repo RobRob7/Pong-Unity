@@ -36,11 +36,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         AssignPlayers();
+        //ResetPlayerPosition();
     }
 
     public void ResetPlayerPosition()
     {
-        //playerRigidBody2D.position = position;
+        playerRigidBody2D.position = position;
         Debug.Log("Resetting paddles");
     }
 
