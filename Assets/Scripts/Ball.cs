@@ -31,7 +31,7 @@ public class Ball : MonoBehaviour
     void Update()
     {
 
-        if(ballRigidBody2D.position.x < -8.25 || ballRigidBody2D.position.x > 8.25)
+        if(ballRigidBody2D.position.x <= -8.25 || ballRigidBody2D.position.x >= 8.25)
         {
             ResetBall();
             player1.position = player1Position;
