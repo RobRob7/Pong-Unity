@@ -18,5 +18,6 @@ public class ScoringSystem : MonoBehaviour
 
     void OnCollisionEnter2D( Rigidbody2D obj ){
 
+        
     }
 }
