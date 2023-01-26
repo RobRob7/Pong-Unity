@@ -14,6 +14,7 @@ public class ScoreKeeper : MonoBehaviour
     int[] allPossibleScores2 = {0,1,2,3,4,5,6,7};
     int count1;
     int count2;
+    int[] scoreKeeper = {0,0};
 
     void Awake()
     {
@@ -34,31 +35,44 @@ public class ScoreKeeper : MonoBehaviour
     void Update()
     {
         //ballLocation = GameObject.Find("Ball").GetComponent<Rigidbody2D>().position;
-        if(IncrementScoreCounterDependingOnWhoWins() == true)
+        if(IncrementScoreCounterDependingOnWhoScores() == true)
         {
-            //count1 = count1 + 1;
-            //count2 = count2 + 1;
+            if(scoreKeeper[0] > 0){
+                player1Score.SetText((KeepCountAndUpdate1()).ToString());
+                wipeScoreKeeperArray();
+            }
+            
+            if(scoreKeeper[1] > 0){
+                player2Score.SetText((KeepCountAndUpdate2()).ToString());
+                wipeScoreKeeperArray();
+            }
         }
 
     }
 
-    bool IncrementScoreCounterDependingOnWhoWins()
+    void wipeScoreKeeperArray(){
+        scoreKeeper[0] = 0;
+        scoreKeeper[1] = 0;
+    }
+
+    bool IncrementScoreCounterDependingOnWhoScores()
     {
         ballLocation = GameObject.Find("Ball").GetComponent<Rigidbody2D>().position;
-        if(ballLocation.x == player2Position)
+        if(ballLocation.x > player2Position)
         {
-            //count++;
+            scoreKeeper[0]++;
+            //count1++;
             //counterPlayer1++;
-            player1Score.SetText((KeepCountAndUpdate1()).ToString());
-            Debug.Log("Player 1 Scored!!!");
+            //player1Score.SetText((KeepCountAndUpdate1()).ToString());
+            //Debug.Log("Player 1 Scored!!!");
             return true;
         }
-        if(ballLocation.x == player1Position)
+        if(ballLocation.x < player1Position)
         {
-            //count++;
+            scoreKeeper[1]++;
             //counterPlayer2++;
-            player2Score.SetText((KeepCountAndUpdate2()).ToString());
-            Debug.Log("Player 2 Scored!!!");
+            //player2Score.SetText((KeepCountAndUpdate2()).ToString());
+            //Debug.Log("Player 2 Scored!!!");
             return true;
         }
         return false;
@@ -67,7 +81,7 @@ public class ScoreKeeper : MonoBehaviour
     int KeepCountAndUpdate1()
     {
         //Debug.Log(count1);
-        count1++;
+        ++count1;
         //Debug.Log(count1);
         return(count1);
     }
@@ -75,7 +89,7 @@ public class ScoreKeeper : MonoBehaviour
     int KeepCountAndUpdate2()
     {
         //Debug.Log(count2);
-        count2++;
+        ++count2;
         //Debug.Log(count2);
         return(count2);
     }
