@@ -46,14 +46,12 @@ public class Ball : MonoBehaviour
         ballRigidBody2D.MovePosition(ballInitialPosition);
         Invoke("InitialLaunchOfBall", 3);
     }
-
     void RestartGame()
     {
         ResetBall();
         gameObject.GetComponent<PlayerController>().ResetPlayerPosition();
         Invoke("InitialLaunchOfBall", 1);
     }
-
     void InitialLaunchOfBall()
     {
         var rnd = new System.Random();
