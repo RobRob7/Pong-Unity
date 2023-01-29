@@ -12,6 +12,8 @@ TagManager:
   - Wall
   - P1_Counter
   - P2_Counter
+  - left_wall
+  - right_wall
   layers:
   - Default
   - TransparentFX
