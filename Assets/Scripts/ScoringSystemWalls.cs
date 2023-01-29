@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SideWalls : MonoBehaviour
+public class ScoringSystemWalls : MonoBehaviour
 {
     BoxCollider2D wall;
     CircleCollider2D ball;
