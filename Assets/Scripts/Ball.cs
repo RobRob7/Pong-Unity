@@ -36,20 +36,16 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(ballCollider2D.IsTouching(leftWallCollider2D) || ballCollider2D.IsTouching(rightWallCollider2D))
-        {
-            ResetBall();
-            player1.position = player1Position;
-            player2.position = player2Position;
-        }
+        
     }
 
-    void ResetBall()
+    public void ResetBallAndPlayerPositions()
     {
         ballRigidBody2D.velocity = new Vector2(0, 0);
         ballInitialPosition = new Vector2(0, 0);
         ballRigidBody2D.MovePosition(ballInitialPosition);
+        player1.position = player1Position;
+        player2.position = player2Position;
         Invoke("InitialLaunchOfBall", 3);
     }
 
@@ -74,7 +70,7 @@ public class Ball : MonoBehaviour
         {
             ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), -Random.Range(4,6));
         }
-    }    
+    }   
 
     /*void RestartGame()
 

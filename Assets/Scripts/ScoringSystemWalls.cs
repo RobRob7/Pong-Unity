@@ -9,6 +9,13 @@ public class ScoringSystemWalls : MonoBehaviour
     CircleCollider2D ball;
     TextMeshProUGUI player1ScoreText, player2ScoreText;
     int player1Count, player2Count;
+    GameObject ballInGame;
+
+    void Start()
+    {
+        ballInGame = GameObject.Find("Ball");
+    }
+
     void Awake()
     {
         wall = GetComponent<BoxCollider2D>();
@@ -23,9 +30,11 @@ public class ScoringSystemWalls : MonoBehaviour
         if(collidingObj.CompareTag("Ball")){
             if(tag == "right_wall"){
                 player1ScoreText.SetText((++player1Count).ToString());
+                ballInGame.GetComponent<Ball>().ResetBallAndPlayerPositions();
             }
-            if(tag == "left_wall"){
+            else if(tag == "left_wall"){
                 player2ScoreText.SetText((++player2Count).ToString());
+                ballInGame.GetComponent<Ball>().ResetBallAndPlayerPositions();
             }
         }
     }
