@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    //[SerializeField] float _speed;
-    Vector2 ballInitialPosition;
+    // Initial ball position
+    Vector3 ballInitialPosition;
+    // 2D rigid body of Ball object
     Rigidbody2D ballRigidBody2D;
+    // Player 1 paddle
     Rigidbody2D player1;
+    // Player 2 paddle
     Rigidbody2D player2;
-    Vector2 player1Position;
-    Vector2 player2Position;
-    CircleCollider2D ballCollider2D;
-    BoxCollider2D leftWallCollider2D, rightWallCollider2D;
+    // Initial player 1 and 2 paddle position
+    Vector2 player1InitialPosition, player2InitialPosition;
     
 
     void Awake()
@@ -20,34 +21,32 @@ public class Ball : MonoBehaviour
         ballRigidBody2D = GetComponent<Rigidbody2D>();
         player1 = GameObject.FindWithTag("Player1").GetComponent<Rigidbody2D>();
         player2 = GameObject.FindWithTag("Player2").GetComponent<Rigidbody2D>();
-        player1Position = player1.position;
-        player2Position = player2.position;
-        ballCollider2D = GameObject.FindWithTag("Ball").GetComponent<CircleCollider2D>();
-        leftWallCollider2D = GameObject.FindWithTag("left_wall").GetComponent<BoxCollider2D>();
-        rightWallCollider2D = GameObject.FindWithTag("right_wall").GetComponent<BoxCollider2D>();
-    }
+        player1InitialPosition = player1.position;
+        player2InitialPosition = player2.position;
+    } // end of Awake()
 
     // Start is called before the first frame update
     void Start()
     {   
+        ballInitialPosition = new Vector3(0, 0, 0);
         Invoke("InitialLaunchOfBall", 3);
-    }
+    } // end of Start()
 
     // Update is called once per frame
     void Update()
     {
         
-    }
+    } // end of Update()
 
     public void ResetBallAndPlayerPositions()
     {
         ballRigidBody2D.velocity = new Vector2(0, 0);
-        ballInitialPosition = new Vector2(0, 0);
-        ballRigidBody2D.MovePosition(ballInitialPosition);
-        player1.position = player1Position;
-        player2.position = player2Position;
+        //ballInitialPosition = new Vector3(0, 0, 0);
+        ballRigidBody2D.position = ballInitialPosition;
+        player1.position = player1InitialPosition;
+        player2.position = player2InitialPosition;
         Invoke("InitialLaunchOfBall", 3);
-    }
+    } // end of ResetBallAndPlayerPositions()
 
     void InitialLaunchOfBall()
     {
@@ -70,19 +69,5 @@ public class Ball : MonoBehaviour
         {
             ballRigidBody2D.velocity = new Vector2(-Random.Range(5,10), -Random.Range(4,6));
         }
-    }   
-
-    /*void RestartGame()
-
-    {
-        ResetBall();
-        gameObject.GetComponent<PlayerController>().ResetPlayerPosition();
-        Invoke("InitialLaunchOfBall", 1);
-    }*/
-    // void OnCollisionEnter2D(Collision2D target)
-    // {
-    //     if(target.collider.CompareTag("Left Wall")){
-            
-    //     }
-    // }
+    } // end of InitialLaunchOfBall()
 }

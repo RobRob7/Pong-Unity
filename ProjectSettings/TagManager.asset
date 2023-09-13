@@ -14,6 +14,8 @@ TagManager:
   - P2_Counter
   - left_wall
   - right_wall
+  - player1Scored
+  - player2Scored
   layers:
   - Default
   - TransparentFX
